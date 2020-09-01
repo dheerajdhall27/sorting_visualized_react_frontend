@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import SortingMainContainer from "./container/SortingMainContainer";
+import { SortingComponent } from './container/SortingComponent';
 
 function App() {
   return (
-    <SortingMainContainer/>
+    <SortingComponent/>
   );
 }
 
