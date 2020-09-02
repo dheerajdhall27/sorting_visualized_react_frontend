@@ -1,4 +1,8 @@
 import React from 'react';
+/**
+ * This component is responsible for rendering the button that are part of the application.
+ * @param {props} This refers to the properties passed by the Sorting Component
+ */
 
 export default function ButtonComponent (props) {
 

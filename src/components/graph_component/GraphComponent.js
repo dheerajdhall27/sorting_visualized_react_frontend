@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import BarComponent from "./BarComponent";
 
-
+/**
+ * This component is responsible for rendering the bar component
+ * @param {props} The properties passed from the Sorting Component
+ */
 export default function GraphComponent(props) {
   
   return (
