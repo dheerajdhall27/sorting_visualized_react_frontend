@@ -12,6 +12,7 @@ export default function BarComponent (props) {
     transform: "rotateZ(180deg) translate(0px, -600px)",
     transformOrigin: "top left",
     border: "1px solid black",
+    borderRadius: "5px"
   };
 
   return (
