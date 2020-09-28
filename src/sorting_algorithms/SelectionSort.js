@@ -13,7 +13,59 @@ export function SelectionSort() {
     
     let indexSwapArr= [];
 
-    this.sort = function (arr, orderByAscending) {
+    /**
+     * This method is used to perform the animations and the swaps required for the algorithm
+     */
+    this.animate = function(speed) {
+        let arr = document.getElementsByClassName('bars');
+        
+        for(let i = 0;i < indexSwapArr.length; i++) {
+            if(indexSwapArr[i][0] === "Animate") {
+                let [action, indexA, indexB] = indexSwapArr[i];
+
+                const barOne = arr[indexA].style;
+                const barTwo = arr[indexB].style;
+
+                setTimeout(() => {
+                    barOne.backgroundColor = "red";
+                    barTwo.backgroundColor = "red";
+                }, speed * i);
+            } else {
+                let [indexA, indexB] = indexSwapArr[i];
+
+                const barOne = arr[indexA].style;
+                const barTwo = arr[indexB].style;
+                setTimeout(() => {
+                    let temp = barOne.height;
+                    barOne.height = barTwo.height;
+                    barTwo.height = temp;
+
+                    // The position of the bars could be similar
+                    // In that case we set them to the same color
+                    if(barOne.height === barTwo.height) {
+                        barTwo.backgroundColor = "lightgreen";
+                        barOne.backgroundColor = "lightgreen";
+                    } else {
+                        barTwo.backgroundColor = "lightgreen";
+                        barOne.backgroundColor = "lightblue";
+                    }
+                }, speed * i);
+            }
+        }
+    }
+
+    this.sort = function (arr, orderByAscending, speed) {
+        if(orderByAscending) {
+            sortAscending(arr);
+        } else {
+            sortDescending(arr);
+        }
+
+        this.animate(speed);
+    }
+
+
+    function sortAscending(arr) {
         for(let i = 0; i < arr.length; i++) {
             let minIndex = i;
             for(let j = i; j < arr.length; j++) {
@@ -21,10 +73,23 @@ export function SelectionSort() {
                     minIndex = j;
                 }
             }
-            swap(arr, minIndex, i);
+            indexSwapArr.push(["Animate", minIndex, i]);
             indexSwapArr.push([minIndex, i]);
+            swap(arr, minIndex, i);
         }
-    
-        return indexSwapArr;
+    }
+
+    function sortDescending(arr) {
+        for(let i = 0; i < arr.length; i++) {
+            let maxIndex = i;
+            for(let j = i; j < arr.length; j++) {
+                if(arr[maxIndex] < arr[j]) {
+                    maxIndex = j;
+                }
+            }
+            indexSwapArr.push(["Animate", maxIndex, i]);
+            indexSwapArr.push([maxIndex, i]);
+            swap(arr, maxIndex, i);
+        }
     }
 }

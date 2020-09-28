@@ -6,7 +6,7 @@ import React from 'react'
  */
 export default function BarComponent (props) {
   const barStyle = {
-    backgroundColor: "lightblue",
+    backgroundColor: props.barIndicesToColor.includes(props.index) ? "lightgreen" : "lightblue",
     width: (window.innerWidth / (props.length + 5)),
     height: props.data  * 3,
     transform: "rotateZ(180deg) translate(0px, -600px)",
@@ -17,6 +17,7 @@ export default function BarComponent (props) {
 
   return (
     <div key={props.index}
+         className="bars"
          style={barStyle}>
     </div>
   );

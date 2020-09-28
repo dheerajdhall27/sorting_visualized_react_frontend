@@ -12,8 +12,10 @@ import { AlgorithmFactory } from "../sorting_algorithms/AlgorithmFactory"
  */
 export function SortingComponent() {
   const [totalBars, setBars] = useState(TOTAL_BARS);
+  const [barIndices, setBarIndex] = useState([]);
   const [algorithmType, setAlgorithmType] = useState(0);
   const [orderByAscending, setOrderByAscending] = useState(true);
+  const [algoSpeed, setAlgoSpeed] = useState(50);
 
   let arrData = [];
 
@@ -23,34 +25,11 @@ export function SortingComponent() {
 
   const [barData, setBarData] = useState(createRandomBars());
 
-  const swap = function(arr, indexA, indexB) {
-    let temp = arr[indexA];
-    arr[indexA] = arr[indexB];
-    arr[indexB] = temp;
-  }
-
-  const setValue = function(ogArr) {
-    console.log(ogArr);
-    setBarData([...ogArr]);
-  }
-
-  const animateTheData = (arr, ogArr) => {
-      for(let i = 0;i < arr.length; i++) {
-        (function(i){
-          setTimeout(function () {
-            swap(ogArr, arr[i][0], arr[i][1]);
-            setValue(ogArr)
-          }, 1000 * (i + 1))
-        })(i);
-      }
-  }
-
-  const sortTheData = (algorithmType, orderByAscending) => {
+  const sortTheData = (algorithmType) => {
     let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByAscending);
     let algorithm = algorithmFactory.createAlgorithm(algorithmType);
 
-    let arrToAnimate = algorithm.sort([...barData], orderByAscending); 
-    animateTheData(arrToAnimate, [...barData]);
+    algorithm.sort([...barData], orderByAscending, algoSpeed); 
   }
 
   useEffect(() => {
@@ -63,10 +42,12 @@ export function SortingComponent() {
       <ButtonComponent setBars={setBars} 
                        setAlgorithmType={setAlgorithmType}
                        setOrderByAscending={setOrderByAscending}
-                       sortTheData={sortTheData}/>
+                       sortTheData={sortTheData}
+                       setAlgoSpeed={setAlgoSpeed}/>
 
       <GraphComponent setBarData={setBarData}
-                      barData={barData}/>
+                      barData={barData}
+                      barIndices={barIndices}/>
     </div>
   );
 }

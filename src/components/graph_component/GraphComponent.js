@@ -13,6 +13,7 @@ export default function GraphComponent(props) {
         props.barData && props.barData.map((data, index, arr) => 
           <BarComponent key={index}
                         data = {data}
+                        barIndicesToColor={props.barIndices}
                         length = {arr.length}
                         index = {index}/>
         )
