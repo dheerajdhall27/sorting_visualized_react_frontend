@@ -13,9 +13,9 @@ import { AlgorithmFactory } from "../sorting_algorithms/AlgorithmFactory"
 export function SortingComponent() {
   const [totalBars, setBars] = useState(TOTAL_BARS);
   const [barIndices, setBarIndex] = useState([]);
-  const [algorithmType, setAlgorithmType] = useState(0);
+  const [algorithmType, setAlgorithmType] = useState("SELECTION_SORT");
   const [orderByAscending, setOrderByAscending] = useState(true);
-  const [algoSpeed, setAlgoSpeed] = useState(50);
+  const [algoSpeed, setAlgoSpeed] = useState(10);
 
   let arrData = [];
 
@@ -25,7 +25,7 @@ export function SortingComponent() {
 
   const [barData, setBarData] = useState(createRandomBars());
 
-  const sortTheData = (algorithmType) => {
+  const sortTheData = () => {
     let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByAscending);
     let algorithm = algorithmFactory.createAlgorithm(algorithmType);
 

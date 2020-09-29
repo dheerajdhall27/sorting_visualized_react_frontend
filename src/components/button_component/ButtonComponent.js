@@ -22,8 +22,9 @@ export default function ButtonComponent (props) {
       <div className="row">
         <div className="col-3">
           <label className="font-weight-bold">ALGORITHM: </label>
-          <select className="ml-2" onChange={(e) => setAlgorithm(e.value)}>
+          <select className="ml-2" onChange={(e) => props.setAlgorithmType(e.target.value)}>
             <option value="SELECTION_SORT">SELECTION SORT</option>
+            <option value="BUBBLE_SORT">BUBBLE SORT</option>
           </select>
         </div>
 
@@ -38,7 +39,7 @@ export default function ButtonComponent (props) {
         <div className="col-2">
           <label className="font-weight-bold">SPEED: </label>
             <input type="range"
-                   min="50"
+                   min="10"
                    max="1000"
                    className="ml-2"
                    onChange={e => props.setAlgoSpeed(getInputValue(e))}/>

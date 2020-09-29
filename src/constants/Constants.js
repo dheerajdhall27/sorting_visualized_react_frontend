@@ -12,3 +12,4 @@ export const TOTAL_BARS = 50;
  */
 
 export const SELECTION_SORT = "SELECTION_SORT"
+export const BUBBLE_SORT = "BUBBLE_SORT"
