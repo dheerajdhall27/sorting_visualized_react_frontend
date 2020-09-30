@@ -30,6 +30,29 @@ export function SelectionSort() {
                     barOne.backgroundColor = "red";
                     barTwo.backgroundColor = "red";
                 }, speed * i);
+            } else if(indexSwapArr[i][0] === "Looking") {
+                let [action, index] = indexSwapArr[i];
+
+                const bar = arr[index].style;
+
+                setTimeout(() => {
+                    bar.backgroundColor = "black"
+                }, speed * i);
+            } else if(indexSwapArr[i][0] === "ColorBack") {
+                let [action, index] = indexSwapArr[i];
+
+                const bar = arr[index].style;
+
+                setTimeout(() => {
+                    bar.backgroundColor = "lightblue"
+                }, speed * i);
+            } else if(indexSwapArr[i][0] === "ColorMinIndex") {
+                let [action, index] = indexSwapArr[i];
+
+                const bar = arr[index].style;
+                setTimeout(() => {
+                    bar.backgroundColor = "yellow"
+                }, speed * i);
             } else {
                 let [indexA, indexB] = indexSwapArr[i];
 
@@ -69,8 +92,12 @@ export function SelectionSort() {
         for(let i = 0; i < arr.length; i++) {
             let minIndex = i;
             for(let j = i; j < arr.length; j++) {
+                indexSwapArr.push(["Looking", j]);
+                indexSwapArr.push(["ColorBack", j]);
                 if(arr[minIndex] > arr[j]) {
+                    indexSwapArr.push(["ColorBack", minIndex]);
                     minIndex = j;
+                    indexSwapArr.push(["ColorMinIndex", minIndex]);
                 }
             }
             indexSwapArr.push(["Animate", minIndex, i]);
