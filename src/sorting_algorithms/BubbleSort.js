@@ -64,7 +64,7 @@ export function BubbleSort() {
     }
 
     this.sort = function (arr, orderByAscending, speed) {
-        if(orderByAscending) {
+        if(orderByAscending === "INCREASING") {
             sortAscending(arr);
         } else {
             sortDescending(arr);
@@ -91,11 +91,13 @@ export function BubbleSort() {
 
     function sortDescending(arr) {
         for(let i = 0; i < arr.length; i++) {
-            for(let j = 0; j < arr.length - 1; j++) {
+            for(let j = 0; j < arr.length - i - 1; j++) {
+                indexSwapArr.push(["Animate", j, j + 1]);
                 if(arr[j] < arr[j + 1]) {
-                    indexSwapArr.push(["Animate", j, j + 1]);
                     indexSwapArr.push([j, j + 1]);
                     swap(arr, j, j + 1);
+                } else {
+                    indexSwapArr.push(["ColorChange", j, j + 1])
                 }
             }
             indexSwapArr.push(["FinalColor", arr.length - i - 1]);

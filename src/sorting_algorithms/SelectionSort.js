@@ -77,8 +77,8 @@ export function SelectionSort() {
         }
     }
 
-    this.sort = function (arr, orderByAscending, speed) {
-        if(orderByAscending) {
+    this.sort = function (arr, orderByType, speed) {
+        if(orderByType === "INCREASING") {
             sortAscending(arr);
         } else {
             sortDescending(arr);
@@ -110,8 +110,12 @@ export function SelectionSort() {
         for(let i = 0; i < arr.length; i++) {
             let maxIndex = i;
             for(let j = i; j < arr.length; j++) {
+                indexSwapArr.push(["Looking", j]);
+                indexSwapArr.push(["ColorBack", j]);
                 if(arr[maxIndex] < arr[j]) {
+                    indexSwapArr.push(["ColorBack", maxIndex]);
                     maxIndex = j;
+                    indexSwapArr.push(["ColorMinIndex", maxIndex]);
                 }
             }
             indexSwapArr.push(["Animate", maxIndex, i]);

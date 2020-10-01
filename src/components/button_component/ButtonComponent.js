@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ALGORITHMS_ARRAY } from '../../constants/AlgorithmsArray';
 import AlgorithmButtonComponent from './algorithm_buttons_component/AlgorithmButtonComponent';
+import OrderingComponent from './ordering_component/OrderingComponent';
 /**
  * This component is responsible for rendering the button that are part of the application.
  * @param {props} This refers to the properties passed by the Sorting Component
@@ -23,15 +24,14 @@ export default function ButtonComponent (props) {
         <div className="col-3">
           <AlgorithmButtonComponent algorithmData = {ALGORITHMS_ARRAY}
                                     setAlgorithmType = {props.setAlgorithmType}
-                                    algorithmType = {props.algorithmType}/>
+                                    algorithmType = {props.algorithmType}
+                                    />
         </div>
 
         <div className="col-3">
-          <label className="font-weight-bold">ORDER-BY: </label>
-          <select  className="ml-2" onChange={(e) => setOrderByAscending(e)}>
-            <option value="increasing">INCREASING</option>
-            <option value="decreasing">DECREASING</option>
-          </select>
+          <OrderingComponent setOrderByAscending={props.setOrderByAscending}
+                             orderData={["INCREASING", "DECREASING"]}
+                             orderByType= {props.orderByType}/>
         </div>
 
         <div className="col-2">
@@ -53,7 +53,8 @@ export default function ButtonComponent (props) {
         </div>
 
         <div className="col-1">
-          <button className="btn-secondary" onClick={() => props.sortTheData()}>
+          <button className="btn-secondary rounded btn-sm btn-block mr-3" 
+                  onClick={() => props.sortTheData()}>
             Sort
           </button>
         </div>

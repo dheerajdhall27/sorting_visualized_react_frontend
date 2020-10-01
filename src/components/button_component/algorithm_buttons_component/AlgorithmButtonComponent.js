@@ -10,7 +10,7 @@ export default function AlgorithmButtonComponent (props) {
         <div className="row">
             {   
                 props.algorithmData.map((d, index) => {
-                    let highlightClass = d === props.algorithmType ? "btn-primary" : "btn-warning";
+                    let highlightClass = d === props.algorithmType ? "btn-primary" : "btn-light";
 
                     return <div className="col-8" key={index}>
                         <button className={`${highlightClass} btn-md btn-block rounded mt-1`} 

@@ -13,8 +13,8 @@ import { AlgorithmFactory } from "../sorting_algorithms/AlgorithmFactory"
 export function SortingComponent() {
   const [totalBars, setBars] = useState(TOTAL_BARS);
   const [barIndices, setBarIndex] = useState([]);
-  const [algorithmType, setAlgorithmType] = useState("MERGE_SORT");
-  const [orderByAscending, setOrderByAscending] = useState(true);
+  const [algorithmType, setAlgorithmType] = useState("SELECTION_SORT");
+  const [orderByType, setOrderByAscending] = useState("INCREASING");
   const [algoSpeed, setAlgoSpeed] = useState(10);
 
   const createRandomBars = () => {
@@ -24,10 +24,10 @@ export function SortingComponent() {
   const [barData, setBarData] = useState(createRandomBars());
 
   const sortTheData = () => {
-    let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByAscending);
+    let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByType);
     let algorithm = algorithmFactory.createAlgorithm(algorithmType);
 
-    algorithm.sort([...barData], orderByAscending, algoSpeed); 
+    algorithm.sort([...barData], orderByType, algoSpeed); 
   }
 
   useEffect(() => {
@@ -42,7 +42,8 @@ export function SortingComponent() {
                        setOrderByAscending={setOrderByAscending}
                        sortTheData={sortTheData}
                        setAlgoSpeed={setAlgoSpeed}
-                       algorithmType={algorithmType}/>
+                       algorithmType={algorithmType}
+                       orderByType={orderByType}/>
 
       <GraphComponent setBarData={setBarData}
                       barData={barData}
