@@ -37,7 +37,6 @@ export function MergeSort() {
 
     this.sort = function (arr, orderByAscending, speed) {
         mergeSort(arr, 0, arr.length - 1);
-        console.log(arr);
         this.animate(speed);
     }
 

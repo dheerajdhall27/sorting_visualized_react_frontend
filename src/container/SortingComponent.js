@@ -13,7 +13,7 @@ import { AlgorithmFactory } from "../sorting_algorithms/AlgorithmFactory"
 export function SortingComponent() {
   const [totalBars, setBars] = useState(TOTAL_BARS);
   const [barIndices, setBarIndex] = useState([]);
-  const [algorithmType, setAlgorithmType] = useState("SELECTION_SORT");
+  const [algorithmType, setAlgorithmType] = useState("MERGE_SORT");
   const [orderByAscending, setOrderByAscending] = useState(true);
   const [algoSpeed, setAlgoSpeed] = useState(10);
 
@@ -41,7 +41,8 @@ export function SortingComponent() {
                        setAlgorithmType={setAlgorithmType}
                        setOrderByAscending={setOrderByAscending}
                        sortTheData={sortTheData}
-                       setAlgoSpeed={setAlgoSpeed}/>
+                       setAlgoSpeed={setAlgoSpeed}
+                       algorithmType={algorithmType}/>
 
       <GraphComponent setBarData={setBarData}
                       barData={barData}

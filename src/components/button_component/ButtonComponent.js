@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { SELECTION_SORT } from "../../constants/Constants"
+import { ALGORITHMS_ARRAY } from '../../constants/AlgorithmsArray';
+import AlgorithmButtonComponent from './algorithm_buttons_component/AlgorithmButtonComponent';
 /**
  * This component is responsible for rendering the button that are part of the application.
  * @param {props} This refers to the properties passed by the Sorting Component
  */
 
 export default function ButtonComponent (props) {
-  const [algorithm, setAlgorithm] = useState(SELECTION_SORT);
 
   const getInputValue = (e) => {
     return Number(e.target.value);
@@ -21,12 +21,9 @@ export default function ButtonComponent (props) {
     <div className="mt-5">
       <div className="row">
         <div className="col-3">
-          <label className="font-weight-bold">ALGORITHM: </label>
-          <select className="ml-2" onChange={(e) => props.setAlgorithmType(e.target.value)}>
-            <option value="SELECTION_SORT">SELECTION SORT</option>
-            <option value="BUBBLE_SORT">BUBBLE SORT</option>
-            <option value="MERGE_SORT">MERGE SORT</option>
-          </select>
+          <AlgorithmButtonComponent algorithmData = {ALGORITHMS_ARRAY}
+                                    setAlgorithmType = {props.setAlgorithmType}
+                                    algorithmType = {props.algorithmType}/>
         </div>
 
         <div className="col-3">
@@ -56,7 +53,7 @@ export default function ButtonComponent (props) {
         </div>
 
         <div className="col-1">
-          <button className="btn-secondary" onClick={() => props.sortTheData(algorithm)}>
+          <button className="btn-secondary" onClick={() => props.sortTheData()}>
             Sort
           </button>
         </div>
