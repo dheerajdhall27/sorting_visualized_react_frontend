@@ -39,6 +39,13 @@ export function BubbleSort() {
                     barOne.backgroundColor = "lightblue";
                     barTwo.backgroundColor = "lightblue";
                 }, speed * i);
+            } else if(indexSwapArr[i][0] === "FinalColor") {
+                let [action, index] = indexSwapArr[i];
+
+                const bar = arr[index].style;
+                setTimeout(() => {
+                    bar.backgroundColor = "lightgreen";
+                }, speed * i);
             } else {
                 let [indexA, indexB] = indexSwapArr[i];
 
@@ -78,6 +85,7 @@ export function BubbleSort() {
                     indexSwapArr.push(["ColorChange", j, j + 1])
                 }
             }
+            indexSwapArr.push(["FinalColor", arr.length - i - 1]);
         }
     }
 
@@ -90,6 +98,7 @@ export function BubbleSort() {
                     swap(arr, j, j + 1);
                 }
             }
+            indexSwapArr.push(["FinalColor", arr.length - i - 1]);
         }
     }
 }
