@@ -1,6 +1,9 @@
-import { SELECTION_SORT, BUBBLE_SORT } from "../constants/Constants";
+import { SELECTION_SORT, 
+         BUBBLE_SORT,
+         MERGE_SORT } from "../constants/Constants";
 import { SelectionSort } from "../sorting_algorithms/SelectionSort"
 import { BubbleSort } from "../sorting_algorithms/BubbleSort"
+import { MergeSort } from "./MergeSort";
 
 /**
  * This represents an Algorithm Factory that is used to create the algorithm
@@ -16,6 +19,9 @@ export function AlgorithmFactory () {
                 break;
             case BUBBLE_SORT:
                 algorithm = new BubbleSort();
+                break;
+            case MERGE_SORT:
+                algorithm = new MergeSort();
                 break;
             default:
         }

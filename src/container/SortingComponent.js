@@ -17,8 +17,6 @@ export function SortingComponent() {
   const [orderByAscending, setOrderByAscending] = useState(true);
   const [algoSpeed, setAlgoSpeed] = useState(10);
 
-  let arrData = [];
-
   const createRandomBars = () => {
     return [...Array(totalBars)].map(() => Math.floor(Math.random() * (MAX_BAR_HEIGHT - MIN_BAR_HEIGHT) + MIN_BAR_HEIGHT))
   }

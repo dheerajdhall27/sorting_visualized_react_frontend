@@ -25,6 +25,7 @@ export default function ButtonComponent (props) {
           <select className="ml-2" onChange={(e) => props.setAlgorithmType(e.target.value)}>
             <option value="SELECTION_SORT">SELECTION SORT</option>
             <option value="BUBBLE_SORT">BUBBLE SORT</option>
+            <option value="MERGE_SORT">MERGE SORT</option>
           </select>
         </div>
 
