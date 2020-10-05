@@ -36,7 +36,7 @@ export function SortingComponent() {
   },[totalBars])
 
   return (
-    <div className="ml-5">
+    <div className="container">
       <ButtonComponent setBars={setBars} 
                        setAlgorithmType={setAlgorithmType}
                        setOrderByAscending={setOrderByAscending}

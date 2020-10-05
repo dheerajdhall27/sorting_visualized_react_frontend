@@ -7,9 +7,9 @@ import React from 'react'
 export default function BarComponent (props) {
   const barStyle = {
     backgroundColor: props.barIndicesToColor.includes(props.index) ? "lightgreen" : "lightblue",
-    width: (window.innerWidth / (props.length + 5)),
-    height: props.data  * 3,
-    transform: "rotateZ(180deg) translate(0px, -37vw)",
+    width: "1.4vw",
+    height: `${props.data * 20 / 100}vh`,
+    transform: "rotateZ(180deg) translate(0px, -40vh)",
     transformOrigin: "top left",
     border: "1px solid black",
     borderRadius: "5px",
