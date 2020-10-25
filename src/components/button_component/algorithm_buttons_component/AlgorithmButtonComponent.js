@@ -2,24 +2,24 @@ import React from 'react';
 
 export default function AlgorithmButtonComponent (props) {
 
-    function buttonClicked(e) {
-        props.setAlgorithmType(e.target.innerText.replace(/\s/,'_'));
+    function updateAlgorithmType(e) {
+        props.setAlgorithmType(e.target.value);
     }
 
     return(
-        <div className="row">
-            {   
-                props.algorithmData.map((d, index) => {
-                    let highlightClass = d === props.algorithmType ? "btn-primary" : "btn-light";
-
-                    return <div className="col-8" key={index}>
-                        <button className={`${highlightClass} btn-md btn-block rounded mt-1`} 
-                                onClick={buttonClicked}>
-                            {d.replace(/_/, ' ')}
-                        </button>
-                    </div>
-                })      
-            }
+        <div className="p-2">
+            <div className="row">
+                <label>Algorithm</label>
+            </div>
+            <div className="row">
+                <select className="w-100" onChange={updateAlgorithmType}>
+                    {   
+                        props.algorithmData.map((d, index) => {                            
+                            return <option value={d} key={index}>{d.replace(/_/, ' ')}</option>;
+                        })      
+                    }
+                </select>
+            </div>
         </div>
     )
 }

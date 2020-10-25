@@ -19,23 +19,23 @@ export default function ButtonComponent (props) {
   }
 
   return (
-    <div className="mt-5">
-      <div className="row">
-        <div className="col-3">
+    <div className="mt-2">
+      <div>
+        <div>
           <AlgorithmButtonComponent algorithmData = {ALGORITHMS_ARRAY}
                                     setAlgorithmType = {props.setAlgorithmType}
                                     algorithmType = {props.algorithmType}
                                     />
         </div>
 
-        <div className="col-3">
+        <div className="mt-4">
           <OrderingComponent setOrderByAscending={props.setOrderByAscending}
                              orderData={["INCREASING", "DECREASING"]}
                              orderByType= {props.orderByType}/>
         </div>
 
-        <div className="col-2">
-          <label className="font-weight-bold">SPEED: </label>
+        <div className="row mt-4">
+          <label className="font-weight-bold ml-2">SPEED: </label>
             <input type="range"
                    min="10"
                    max="1000"
@@ -43,17 +43,17 @@ export default function ButtonComponent (props) {
                    onChange={e => props.setAlgoSpeed(getInputValue(e))}/>
         </div>
 
-        <div className="col-3">
-          <label className="font-weight-bold">NUMBER OF BARS: </label>
+        <div className="row mt-4">
+          <label className="font-weight-bold ml-2">BARS: </label>
             <input type="range"
                    min="50"
-                   max="80"
+                   max="200"
                    className="ml-2"
                    onChange={e => props.setBars(getInputValue(e))}/>
         </div>
 
-        <div className="col-1">
-          <button className="btn-secondary rounded btn-sm btn-block mr-3" 
+        <div className="row mt-4 p-2">
+          <button className="btn-secondary rounded btn-sm btn-block" 
                   onClick={() => props.sortTheData()}>
             Sort
           </button>

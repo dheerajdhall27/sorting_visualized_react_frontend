@@ -8,7 +8,7 @@ import BarComponent from "./BarComponent";
 export default function GraphComponent(props) {
   
   return (
-    <div className="row ml-1">
+    <div className="row ml-5">
       {
         props.barData && props.barData.map((data, index, arr) => 
           <BarComponent key={index}

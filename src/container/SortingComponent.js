@@ -26,7 +26,7 @@ export function SortingComponent() {
   const sortTheData = () => {
     let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByType);
     let algorithm = algorithmFactory.createAlgorithm(algorithmType);
-
+    
     algorithm.sort([...barData], orderByType, algoSpeed); 
   }
 
@@ -36,18 +36,24 @@ export function SortingComponent() {
   },[totalBars])
 
   return (
-    <div className="container">
-      <ButtonComponent setBars={setBars} 
-                       setAlgorithmType={setAlgorithmType}
-                       setOrderByAscending={setOrderByAscending}
-                       sortTheData={sortTheData}
-                       setAlgoSpeed={setAlgoSpeed}
-                       algorithmType={algorithmType}
-                       orderByType={orderByType}/>
+    <div className="container-fluid">
+      <div className="row ml-auto mt-2">
+        <div className="col-2 border">
+          <ButtonComponent setBars={setBars} 
+                          setAlgorithmType={setAlgorithmType}
+                          setOrderByAscending={setOrderByAscending}
+                          sortTheData={sortTheData}
+                          setAlgoSpeed={setAlgoSpeed}
+                          algorithmType={algorithmType}
+                          orderByType={orderByType}/>
+        </div>
 
-      <GraphComponent setBarData={setBarData}
-                      barData={barData}
-                      barIndices={barIndices}/>
+        <div className="col-10">
+          <GraphComponent setBarData={setBarData}
+                          barData={barData}
+                          barIndices={barIndices}/>
+        </div>
+      </div>
     </div>
   );
 }
