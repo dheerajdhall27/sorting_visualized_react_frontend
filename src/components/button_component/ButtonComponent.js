@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ALGORITHMS_ARRAY } from '../../constants/AlgorithmsArray';
 import AlgorithmButtonComponent from './algorithm_buttons_component/AlgorithmButtonComponent';
 import OrderingComponent from './ordering_component/OrderingComponent';
+import {MIN_BARS, MAX_BARS, MIN_SPEED, MAX_SPEED} from "../../constants/Constants";
 /**
  * This component is responsible for rendering the button that are part of the application.
  * @param {props} This refers to the properties passed by the Sorting Component
@@ -37,23 +38,23 @@ export default function ButtonComponent (props) {
         <div className="row mt-4">
           <label className="font-weight-bold ml-2">SPEED: </label>
             <input type="range"
-                   min="10"
-                   max="1000"
+                   min={MIN_SPEED}
+                   max={MAX_SPEED}
                    className="ml-2"
-                   onChange={e => props.setAlgoSpeed(getInputValue(e))}/>
+                   onChange={e => props.setAlgoSpeed(MAX_SPEED + 1 - getInputValue(e))}/>
         </div>
 
         <div className="row mt-4">
           <label className="font-weight-bold ml-2">BARS: </label>
             <input type="range"
-                   min="50"
-                   max="200"
+                   min={MIN_BARS}
+                   max={MAX_BARS}
                    className="ml-2"
                    onChange={e => props.setBars(getInputValue(e))}/>
         </div>
 
         <div className="row mt-4 p-2">
-          <button className="btn-secondary rounded btn-sm btn-block" 
+          <button className="btn-success rounded btn-sm btn-block" 
                   onClick={() => props.sortTheData()}>
             Sort
           </button>

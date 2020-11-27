@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ButtonComponent from "../components/button_component/ButtonComponent";
 import GraphComponent from "../components/graph_component/GraphComponent";
-import {MIN_BAR_HEIGHT, MAX_BAR_HEIGHT, TOTAL_BARS} from "../constants/Constants";
+import {MIN_BAR_HEIGHT, MAX_BAR_HEIGHT, MIN_BARS, MAX_SPEED} from "../constants/Constants";
 import { AlgorithmFactory } from "../sorting_algorithms/AlgorithmFactory"
 
 /**
@@ -11,7 +11,7 @@ import { AlgorithmFactory } from "../sorting_algorithms/AlgorithmFactory"
  * 3. The order of Sorting
  */
 export function SortingComponent() {
-  const [totalBars, setBars] = useState(TOTAL_BARS);
+  const [totalBars, setBars] = useState(MIN_BARS);
   const [barIndices, setBarIndex] = useState([]);
   const [algorithmType, setAlgorithmType] = useState("SELECTION_SORT");
   const [orderByType, setOrderByAscending] = useState("INCREASING");
@@ -26,7 +26,7 @@ export function SortingComponent() {
   const sortTheData = () => {
     let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByType);
     let algorithm = algorithmFactory.createAlgorithm(algorithmType);
-    
+    console.log(algoSpeed)
     algorithm.sort([...barData], orderByType, algoSpeed); 
   }
 
@@ -48,7 +48,7 @@ export function SortingComponent() {
                           orderByType={orderByType}/>
         </div>
 
-        <div className="col-10">
+        <div className="col-9 border ml-1 bg-secondary">
           <GraphComponent setBarData={setBarData}
                           barData={barData}
                           barIndices={barIndices}/>
