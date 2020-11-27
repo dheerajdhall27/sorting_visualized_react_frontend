@@ -9,11 +9,11 @@ export default function OrderingComponent (props) {
     return(
         <div className="p-2">
             <div className="row">
-                <label className="font-weight-bold">ORDERING</label>
+                <label className="font-weight-bold text-white">ORDERING</label>
             </div>
             
             <div className="row">
-                <select className="w-100 form-control-sm" onChange={updateOrderingType}>
+                <select className="w-100 form-control-sm" onChange={updateOrderingType} disabled={props.algoRunning}>
                     {   
                         props.orderData.map((d, index) => {
                             return <option value={d} key={index}>{d}</option>;

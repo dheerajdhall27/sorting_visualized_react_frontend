@@ -15,7 +15,9 @@ export function SortingComponent() {
   const [barIndices, setBarIndex] = useState([]);
   const [algorithmType, setAlgorithmType] = useState("SELECTION_SORT");
   const [orderByType, setOrderByAscending] = useState("INCREASING");
-  const [algoSpeed, setAlgoSpeed] = useState(10);
+  const [algoSpeed, setAlgoSpeed] = useState(MAX_SPEED);
+  const [algoRunning, setAlgoRunning] = useState(false);
+
 
   const createRandomBars = () => {
     return [...Array(totalBars)].map(() => Math.floor(Math.random() * (MAX_BAR_HEIGHT - MIN_BAR_HEIGHT) + MIN_BAR_HEIGHT))
@@ -24,9 +26,10 @@ export function SortingComponent() {
   const [barData, setBarData] = useState(createRandomBars());
 
   const sortTheData = () => {
+    setAlgoRunning(true);
     let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByType);
     let algorithm = algorithmFactory.createAlgorithm(algorithmType);
-    console.log(algoSpeed)
+    
     algorithm.sort([...barData], orderByType, algoSpeed); 
   }
 
@@ -38,14 +41,16 @@ export function SortingComponent() {
   return (
     <div className="container-fluid">
       <div className="row ml-auto mt-2">
-        <div className="col-2 border">
+        <div className="col-2 border bg-secondary">
           <ButtonComponent setBars={setBars} 
                           setAlgorithmType={setAlgorithmType}
                           setOrderByAscending={setOrderByAscending}
                           sortTheData={sortTheData}
                           setAlgoSpeed={setAlgoSpeed}
                           algorithmType={algorithmType}
-                          orderByType={orderByType}/>
+                          orderByType={orderByType}
+                          setAlgoRunning={setAlgoRunning}
+                          algoRunning={algoRunning}/>
         </div>
 
         <div className="col-9 border ml-1 bg-secondary">

@@ -27,7 +27,7 @@ export function MergeSort() {
                 const bar = arr[index].style;
 
                 setTimeout(() => {
-                    bar.height = height + "px";
+                    bar.height = (height * 1.7) + "px";
 
                     bar.backgroundColor = "lightgreen";
                 }, speed * i);

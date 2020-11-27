@@ -7,7 +7,7 @@ export const MAX_BARS = 150;
 export const MIN_BARS = 50;
 
 
-export const MIN_SPEED = 10;
+export const MIN_SPEED = 4;
 export const MAX_SPEED = 1000;
 
 /**

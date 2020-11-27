@@ -26,37 +26,44 @@ export default function ButtonComponent (props) {
           <AlgorithmButtonComponent algorithmData = {ALGORITHMS_ARRAY}
                                     setAlgorithmType = {props.setAlgorithmType}
                                     algorithmType = {props.algorithmType}
+                                    setAlgoRunning = {props.setAlgoRunning}
+                                    algoRunning = {props.algoRunning}
                                     />
         </div>
 
         <div className="mt-4">
           <OrderingComponent setOrderByAscending={props.setOrderByAscending}
                              orderData={["INCREASING", "DECREASING"]}
-                             orderByType= {props.orderByType}/>
+                             orderByType= {props.orderByType}
+                             setAlgoRunning = {props.setAlgoRunning}
+                             algoRunning = {props.algoRunning}/>
         </div>
 
         <div className="row mt-4">
-          <label className="font-weight-bold ml-2">SPEED: </label>
+          <label className="font-weight-bold ml-2 text-white">SPEED: </label>
             <input type="range"
                    min={MIN_SPEED}
                    max={MAX_SPEED}
                    className="ml-2"
-                   onChange={e => props.setAlgoSpeed(MAX_SPEED + 1 - getInputValue(e))}/>
+                   disabled={props.algoRunning}
+                   onChange={e => props.setAlgoSpeed(MAX_SPEED - (getInputValue(e) - MIN_SPEED))}/>
         </div>
 
         <div className="row mt-4">
-          <label className="font-weight-bold ml-2">BARS: </label>
+          <label className="font-weight-bold ml-2 text-white">BARS: </label>
             <input type="range"
                    min={MIN_BARS}
                    max={MAX_BARS}
+                   disabled={props.algoRunning}
                    className="ml-2"
                    onChange={e => props.setBars(getInputValue(e))}/>
         </div>
 
         <div className="row mt-4 p-2">
-          <button className="btn-success rounded btn-sm btn-block" 
+          <button className="btn-success rounded btn-sm btn-block font-weight-bold" 
+                  disabled={props.algoRunning}
                   onClick={() => props.sortTheData()}>
-            Sort
+            SORT
           </button>
         </div>
 
