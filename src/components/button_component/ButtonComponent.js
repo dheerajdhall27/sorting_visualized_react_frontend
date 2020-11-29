@@ -67,6 +67,13 @@ export default function ButtonComponent (props) {
           </button>
         </div>
 
+        <div className="row mt-4 p-2">
+          <button className="btn-warning rounded btn-sm btn-block font-weight-bold text-white" 
+                  onClick={() => props.stopAndRefresh()}>
+            STOP AND REFRESH
+          </button>
+        </div>
+
       </div>
     </div>
   );

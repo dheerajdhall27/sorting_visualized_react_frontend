@@ -9,7 +9,7 @@ export default function BarComponent (props) {
     backgroundColor: props.barIndicesToColor.includes(props.index) ? "lightgreen" : "lightblue",
     width: `${95/props.length}%`,
     height: `${props.data * 20 / 80}vh`,
-    transform: "rotateZ(180deg) translate(0px, -50vh)",
+    transform: "rotateZ(180deg) translate(0px, -63vh)",
     transformOrigin: "top left",
     border: "1px solid black",
     borderRadius: "5px",

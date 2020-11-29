@@ -12,6 +12,7 @@ export function SelectionSort() {
     }
     
     let indexSwapArr= [];
+    let timeOutArray = [];
 
     /**
      * This method is used to perform the animations and the swaps required for the algorithm
@@ -26,39 +27,43 @@ export function SelectionSort() {
                 const barOne = arr[indexA].style;
                 const barTwo = arr[indexB].style;
 
-                setTimeout(() => {
+                var timer = setTimeout(() => {
                     barOne.backgroundColor = "red";
                     barTwo.backgroundColor = "red";
                 }, speed * i);
+                timeOutArray.push(timer);
             } else if(indexSwapArr[i][0] === "Looking") {
                 let [action, index] = indexSwapArr[i];
 
                 const bar = arr[index].style;
 
-                setTimeout(() => {
+                var timer = setTimeout(() => {
                     bar.backgroundColor = "black"
                 }, speed * i);
+                timeOutArray.push(timer);
             } else if(indexSwapArr[i][0] === "ColorBack") {
                 let [action, index] = indexSwapArr[i];
 
                 const bar = arr[index].style;
 
-                setTimeout(() => {
+                var timer = setTimeout(() => {
                     bar.backgroundColor = "lightblue"
                 }, speed * i);
+                timeOutArray.push(timer);
             } else if(indexSwapArr[i][0] === "ColorMinIndex") {
                 let [action, index] = indexSwapArr[i];
 
                 const bar = arr[index].style;
-                setTimeout(() => {
+                var timer = setTimeout(() => {
                     bar.backgroundColor = "yellow"
                 }, speed * i);
+                timeOutArray.push(timer);
             } else {
                 let [indexA, indexB] = indexSwapArr[i];
 
                 const barOne = arr[indexA].style;
                 const barTwo = arr[indexB].style;
-                setTimeout(() => {
+                var timer = setTimeout(() => {
                     let temp = barOne.height;
                     barOne.height = barTwo.height;
                     barTwo.height = temp;
@@ -73,7 +78,20 @@ export function SelectionSort() {
                         barOne.backgroundColor = "lightblue";
                     }
                 }, speed * i);
+                timeOutArray.push(timer);
             }
+        }
+    }
+
+    this.stopAnimation = function() {
+        for(let i = 0; i < timeOutArray.length; i++) {
+            clearTimeout(timeOutArray[i]);
+        }
+
+        let arr = document.getElementsByClassName('bars');
+
+        for(let i = 0; i < arr.length; i++) {
+            arr[i].style.backgroundColor = "lightblue";
         }
     }
 

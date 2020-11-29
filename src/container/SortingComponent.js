@@ -17,7 +17,7 @@ export function SortingComponent() {
   const [orderByType, setOrderByAscending] = useState("INCREASING");
   const [algoSpeed, setAlgoSpeed] = useState(MAX_SPEED);
   const [algoRunning, setAlgoRunning] = useState(false);
-
+  const [currentAlgoObject, setAlgoObject] = useState(null);
 
   const createRandomBars = () => {
     return [...Array(totalBars)].map(() => Math.floor(Math.random() * (MAX_BAR_HEIGHT - MIN_BAR_HEIGHT) + MIN_BAR_HEIGHT))
@@ -29,8 +29,14 @@ export function SortingComponent() {
     setAlgoRunning(true);
     let algorithmFactory = new AlgorithmFactory(algorithmType, barData, orderByType);
     let algorithm = algorithmFactory.createAlgorithm(algorithmType);
-    
+    setAlgoObject(algorithm);
     algorithm.sort([...barData], orderByType, algoSpeed); 
+  }
+
+  const stopAndRefresh = () => {
+    setAlgoRunning(false);
+    setBarData(createRandomBars());
+    currentAlgoObject.stopAnimation();
   }
 
   useEffect(() => {
@@ -50,7 +56,8 @@ export function SortingComponent() {
                           algorithmType={algorithmType}
                           orderByType={orderByType}
                           setAlgoRunning={setAlgoRunning}
-                          algoRunning={algoRunning}/>
+                          algoRunning={algoRunning}
+                          stopAndRefresh={stopAndRefresh}/>
         </div>
 
         <div className="col-9 border ml-1 bg-secondary">

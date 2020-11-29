@@ -5,6 +5,7 @@
  */
 export function MergeSort() {
     let animationArray = [];
+    let timeOutArray = [];
 
     /**
      * This method is used to perform the animations and the swaps required for the algorithm
@@ -18,20 +19,34 @@ export function MergeSort() {
 
                 const bar = arr[index].style;
 
-                setTimeout(() => {
+                var timer = setTimeout(() => {
                     bar.backgroundColor = "red";
                 }, speed * i)
+                timeOutArray.push(timer);
             } else if(animationArray[i][0] === "Update") {
                 let [action, index, height] = animationArray[i];
                 
                 const bar = arr[index].style;
 
-                setTimeout(() => {
+                var timer = setTimeout(() => {
                     bar.height = (height * 1.7) + "px";
 
                     bar.backgroundColor = "lightgreen";
                 }, speed * i);
+                timeOutArray.push(timer);
             }
+        }
+    }
+
+    this.stopAnimation = function() {
+        for(let i = 0; i < timeOutArray.length; i++) {
+            clearTimeout(timeOutArray[i]);
+        }
+
+        let arr = document.getElementsByClassName('bars');
+
+        for(let i = 0; i < arr.length; i++) {
+            arr[i].style.backgroundColor = "lightblue";
         }
     }
 
